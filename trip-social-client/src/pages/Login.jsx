@@ -13,7 +13,7 @@ export default function Login(){
         };
 
         const auth = btoa(`${username}:${password}`);
-        await fetch(`http://localhost:8080/api/auth/token`, {
+        await fetch(`${import.meta.env.VITE_LOGIN_ENDPOINT}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

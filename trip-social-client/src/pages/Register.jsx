@@ -9,7 +9,7 @@ export default function Register(){
             password
         };
 
-        await fetch(`http://localhost:8080/register`, {
+        await fetch(`${import.meta.env.VITE_REGISTER_ENDPOINT}`, {
             method: "POST",
             headers: {"Content-type" : "application/json"},
             body: JSON.stringify(user)
