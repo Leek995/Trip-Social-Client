@@ -1,41 +1,49 @@
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import UsernameAndPasswordValidation from "../validations/UsernameAndPasswordValidation.js";
 
 
 export default function Login(){
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     async function submitHandler(e) {
         e.preventDefault();
-        const user = {
-            username,
-            password,
-        };
-
         const auth = btoa(`${username}:${password}`);
-        await fetch(`${import.meta.env.VITE_LOGIN_ENDPOINT}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': `Basic ${auth}`
-            },
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.jwt)
-            })
-
-
-
-
-        setUsername("");
-        setPassword("");
+        if(error){
+            setUsername("");
+            setPassword("");
+        }else if(!error){
+            await fetch(`${import.meta.env.VITE_LOGIN_ENDPOINT}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': `Basic ${auth}`
+                },
+            }).then(async response => {
+                if (response.status === 401) {
+                    setError("Invalid Password or Username")
+                } else if (response.status === 200) {
+                    localStorage.setItem('jwt', JSON.stringify(await response.json()));
+                    setTimeout(function (){
+                        navigate("/")
+                    }, 1000);
+                    setError("submitted successfully!");
+                }
+            });
+            setUsername("");
+            setPassword("");
+        }
     }
+
     return(
         <>
             <h1>Login</h1>
             <form onSubmit={submitHandler}>
+                <p>{error}</p>
                 <input
                     type = "text"
                     placeholder = "Username"
@@ -49,7 +57,7 @@ export default function Login(){
                     value = {password}
                     onChange = {(e) => setPassword(e.target.value)}
                 />
-                <button type = "Submit">Submit</button>
+                <button onClick={()=>setError(UsernameAndPasswordValidation(username, password))} type = "Submit">Submit</button>
             </form>
         </>
     )
