@@ -16,11 +16,17 @@ export default function Login(){
         await fetch(`http://localhost:8080/api/auth/token`, {
             method: "POST",
             headers: {
-                // "Content-type": "application/json",
+                "Content-Type": "application/json",
                 // 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': `Basic ${auth}`
             },
-        });
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.jwt)
+            })
+
+
 
 
         setUsername("");
