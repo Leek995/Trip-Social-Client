@@ -9,8 +9,13 @@ export default function Login(){
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
+
     async function submitHandler(e) {
         e.preventDefault();
+        const userLC = {
+            username,
+            password
+        }
         const auth = btoa(`${username}:${password}`);
         if(error){
             setUsername("");
@@ -28,6 +33,7 @@ export default function Login(){
                     setError("Invalid Password or Username")
                 } else if (response.status === 200) {
                     localStorage.setItem('jwt', JSON.stringify(await response.json()));
+                    localStorage.setItem('user', JSON.stringify(userLC))
                     setTimeout(function (){
                         navigate("/")
                     }, 1000);
