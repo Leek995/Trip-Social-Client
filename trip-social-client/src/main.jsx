@@ -7,6 +7,9 @@ import ErrorPage from "./pages/error-page.jsx";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Settings from "./pages/Settings";
+import Additional from "./pages/Additional";
+import ProfileImageUpload from "./pages/ProfileImageUpload";
+
 
 
 const router = createBrowserRouter([
@@ -20,17 +23,25 @@ const router = createBrowserRouter([
                 path: "/settings",
                 element: <Settings/>
             },
-            {
-                path: "/register",
-                element: <Register/>
-            },
+
         ]
     },
     {
         path: "/login",
         element: <Login/>
     },
-
+    {
+        path: "/register",
+        element: <Register/>,
+    },
+    {
+        path: "/register/additional",
+        element: <Additional/>
+    },
+    {
+        path: "/register/upload",
+        element: <ProfileImageUpload/>
+    }
 
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
