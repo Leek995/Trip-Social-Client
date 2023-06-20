@@ -30,10 +30,12 @@ export default function Settings(){
         })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 localStorage.setItem("user", JSON.stringify(data))
                 setTimeout(function (){
-                    window.location.replace("/")
                     // localStorage.clear();
+                    // window.location.replace("/")
+                    navigate("/")
                 }, 1000);
                 setMessage("submitted successfully!");
             });

@@ -3,36 +3,22 @@ import Settings from "./Settings";
 import {Link, useNavigate, Outlet, useLoaderData} from "react-router-dom";
 
 export async function loader(){
-    const loggedUser = JSON.parse(localStorage.getItem("user"))
-    if(loggedUser.id){
-        const jwt_token = JSON.parse(localStorage.getItem("jwt"));
-        const response = await fetch(`${import.meta.env.VITE_SETTINGS_EDIT_USER_INPUT}/${loggedUser.id}`,{
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${jwt_token.jwt}`
-            },
-        });
-        const user = await response.json();
-        localStorage.setItem("user", JSON.stringify(user));
-        console.log(loggedUser.id)
-        return { user };
-    }else{
-        const jwt_token = JSON.parse(localStorage.getItem("jwt"));
-        const response = await fetch(`${import.meta.env.VITE_HOME_USER_INPUT}`,{
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${jwt_token.jwt}`
-            },
-        });
-        const user = await response.json();
-        localStorage.setItem("user", JSON.stringify(user));
-        return { user };
-    }
+    const jwt_token = JSON.parse(localStorage.getItem("jwt"));
+    const response = await fetch(`${import.meta.env.VITE_HOME_USER_INPUT}`,{
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt_token.jwt}`
+        },
+    });
+    const user = await response.json();
+    localStorage.setItem("user", JSON.stringify(user));
+    return { user };
 
 }
 export default function Root(){
+    // utilizing local storage to temporarily show any update from settings
+    const user1 = JSON.parse(localStorage.getItem("user"))
     const {user} = useLoaderData();
     console.log("passed user", user)
 
@@ -61,10 +47,16 @@ export default function Root(){
         </ul>
         <><Outlet/></>
         <h1>User Details</h1>
-        <p>User ID: {user.id}</p>
-        <p>User Role: {user.roles}</p>
-        <p>User Username: {user.username}</p>
-        <p>User Password: {user.password}</p>
+        <p>User ID: {user1.id}</p>
+        <p>User Role: {user1.roles}</p>
+        <p>User Username: {user1.username}</p>
+        <p>User Password: {user1.password}</p>
+        <p>User Email: {user1.email}</p>
+        <p>User First Name: {user1.firstName}</p>
+        <p>User Last Name: {user1.lastName}</p>
+        <p>User Last Name: {user1.dateOfBirth}</p>
+        <p>User Image: {user1.image}</p>
+        <img src={user1.image}/>
     </>
 }
 
