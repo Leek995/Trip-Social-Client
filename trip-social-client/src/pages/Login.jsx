@@ -12,10 +12,6 @@ export default function Login(){
 
     async function submitHandler(e) {
         e.preventDefault();
-        const userLC = {
-            username,
-            password
-        }
         const auth = btoa(`${username}:${password}`);
         if(error){
             setUsername("");
@@ -25,7 +21,6 @@ export default function Login(){
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': `Basic ${auth}`
                 },
             }).then(async response => {
@@ -33,7 +28,6 @@ export default function Login(){
                     setError("Invalid Password or Username")
                 } else if (response.status === 200) {
                     localStorage.setItem('jwt', JSON.stringify(await response.json()));
-                    localStorage.setItem('user', JSON.stringify(userLC))
                     setTimeout(function (){
                         navigate("/")
                     }, 1000);
