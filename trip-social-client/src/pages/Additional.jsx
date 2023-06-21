@@ -1,10 +1,11 @@
-import {Form, Link} from "react-router-dom";
+import {Form, Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 
 export default function Additional(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const navigate = useNavigate();
     let userFromStorage = JSON.parse(localStorage.getItem("user"))
 
     async function submitHandler(e) {
@@ -22,7 +23,8 @@ export default function Additional(){
             .then(data => {
                 localStorage.setItem("user", JSON.stringify(data))
         })
-        window.location.replace("/register/upload")
+        // window.location.replace("/register/upload")
+        navigate("/register/upload");
     }
 
     return<>

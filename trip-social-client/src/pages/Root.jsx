@@ -16,15 +16,31 @@ export async function loader(){
     return { user };
 
 }
-export default function Root(){
+export default function Root() {
     // utilizing local storage to temporarily show any update from settings
     const user1 = JSON.parse(localStorage.getItem("user"))
+
     const {user} = useLoaderData();
     console.log("passed user", user)
+
+
+    fetch(`http://localhost:8080/register/image/${user1.imageData.name}`)
+        .then(r => r.blob())
+        .then(blob => {
+            let url = URL.createObjectURL(blob)
+            localStorage.setItem("ava", JSON.stringify(url))
+            const img = new Image();
+            img.src=url;
+            img.onload = () => {
+                document.getElementById("avatar").setAttribute("src",url)
+            }
+
+        })
 
     function logOutUser(){
         localStorage.clear();
     }
+
 
     return<>
         <h1>Home</h1>
@@ -55,8 +71,8 @@ export default function Root(){
         <p>User First Name: {user1.firstName}</p>
         <p>User Last Name: {user1.lastName}</p>
         <p>User Last Name: {user1.dateOfBirth}</p>
-        <p>User Image: {user1.image}</p>
-        <img src={user1.image}/>
+        <p>User Image: {user1.imageData.name}</p>
+        <img id="avatar"/>
     </>
 }
 

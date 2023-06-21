@@ -1,9 +1,9 @@
 import {useState} from "react";
 import axios from "axios";
-import {Form} from "react-router-dom";
-
+import {useNavigate} from "react-router-dom";
 export default function ProfileImageUpload(){
     const [image, setImage] = useState("");
+    const navigate = useNavigate();
     let userFromStorage = JSON.parse(localStorage.getItem("user"))
     async function submitHandler(e) {
         e.preventDefault();
@@ -15,12 +15,10 @@ export default function ProfileImageUpload(){
             console.log(res)
         })
 
-        // await fetch(`http://localhost:8080/register/image`,{
-        //     method: "POST",
-        //     body: JSON.stringify(formData),
-        // });
+
 
         console.log(image)
+        navigate("/login")
         // window.location.replace("/login")
     }
     function handleImage(e){
