@@ -11,7 +11,7 @@ export default function ProfileImageUpload(){
         formData.append('image', image)
         // userFromStorage.image = image;
 
-        axios.post(`http://localhost:8080/register/image`, formData).then(res => {
+        axios.post(`http://localhost:8080/register/${userFromStorage.id}/image`, formData).then(res => {
             console.log(res)
         })
 
