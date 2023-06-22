@@ -35,7 +35,8 @@ export default function Settings(){
                 setTimeout(function (){
                     // localStorage.clear();
                     // window.location.replace("/")
-                    navigate("/")
+                    navigate("/login")
+                    localStorage.clear();
                 }, 1000);
                 setMessage("submitted successfully!");
             });
