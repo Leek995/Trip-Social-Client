@@ -9,6 +9,9 @@ import Login from "./pages/Login";
 import Settings from "./pages/Settings";
 import Additional from "./pages/Additional";
 import ProfileImageUpload from "./pages/ProfileImageUpload";
+import Posts from "./pages/Posts.jsx";
+import EditPost from "./pages/EditPost";
+import CreatePost from "./pages/CreatePost.jsx";
 
 
 
@@ -23,6 +26,15 @@ const router = createBrowserRouter([
                 path: "/settings",
                 element: <Settings/>
             },
+            {
+                path: "/posts",
+                element: <Posts/>
+            },
+            {
+                path: "/create/post",
+                element: <CreatePost/>
+            },
+
 
         ]
     },
@@ -41,11 +53,18 @@ const router = createBrowserRouter([
     {
         path: "/register/upload",
         element: <ProfileImageUpload/>
-    }
+    },
+
+    {
+        path: "/edit/post",
+        element: <EditPost/>
+    },
+
 
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+      <h1>TripSocial</h1>
      <RouterProvider router={router}/>
   </React.StrictMode>,
 )
