@@ -28,27 +28,33 @@ export default function Additional(){
     }
 
     return<>
-        <h1>Additional PAge</h1>
-        <Form onSubmit={submitHandler}>
+        <h1 className="registerTitle">Additional Information</h1>
+        <form className="loginForm" onSubmit={submitHandler}>
             <input
                 type = "text"
                 placeholder = "Email"
                 value = {email}
                 onChange = {(e) => setEmail(e.target.value)}
+                className="loginInput"
             />
             <input
                 type = "text"
                 placeholder = "Username"
                 value = {username}
                 onChange = {(e) => setUsername(e.target.value)}
+                className="loginInput"
             />
             <input
                 type = "text"
                 placeholder = "Password"
                 value = {password}
                 onChange = {(e) => setPassword(e.target.value)}
+                className="loginInput"
             />
-            <button type="submit">next</button>
-        </Form>
+
+            <button type="submit"
+                    className="btn btn-primary">next
+            </button>
+        </form>
     </>
 }

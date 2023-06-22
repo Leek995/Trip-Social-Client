@@ -68,24 +68,34 @@ export const Post = ({post}) => {
     // setPostBody("");
     // setTitle("");
 
+    console.log(post)
+
     return (
 
         <>
             <div>
-                <h5>title: {post.title}</h5>
-                <p>{post.postBody}</p>
-                <p>{post['user'].username || "anon"}</p>
+                <div className="postCard">
+                    <h5 className="postTitle">{post.title}</h5>
+                    <p className="postBody">{post.postBody}</p>
+                    <p className="postAuthor">{post['user'].username || "anon"}</p>
+                    {post.user.id === user.id&&(
+                        <div className="editPostBtn">
+                            <button onClick={getIdFromPost} type="button" className="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                Edit
+                            </button>
+                        </div>
 
-                <button onClick={getIdFromPost} type="button" className="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                    Edit
-                </button>
+                    )}
+                </div>
+
+
                 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <h1 className="modal-title fs-5" id="exampleModalLabel">Edit Post</h1>
                                 <button type="button" className="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
@@ -94,15 +104,17 @@ export const Post = ({post}) => {
                                     <p>{message}</p>
                                     <input
                                         type="text"
-                                        placeholder="write about trip"
+                                        placeholder="Title"
                                         value={title}
                                         onChange={(e) => setTitle(e.target.value)}
+                                        className="modalInputTitle"
                                     />
-                                    <input
+                                    <textarea
                                         type="text"
-                                        placeholder="write about trip"
+                                        placeholder="Write about trip...."
                                         value={postBody}
                                         onChange={(e) => setPostBody(e.target.value)}
+                                        className="modalInputPostBody"
                                     />
                                     <div className="modal-footer">
                                         <button type="button" className="btn btn-secondary"
@@ -114,6 +126,7 @@ export const Post = ({post}) => {
                                         <button onClick={deleteHandler} type="submit"
                                                 className="btn btn-danger">Delete
                                         </button>
+
                                     </div>
                                 </form>
                             </div>

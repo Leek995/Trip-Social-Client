@@ -1,1 +1,148 @@
+.profileCard{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    margin-left: 1em;
+    margin-top: 2em;
+    margin-bottom: 4em;
+}
+.profileImage{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+.profileName{
+    margin-left: 1em;
+}
+.profileFirstName{
+    margin-right: .5em;
+    display: inline-block;
+}
+.createPostContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.createPostTitle{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.createPostTitleInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 3em;
+    margin-bottom: 1em;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+}
+.createPostBodyInput{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1em;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
 
+}
+.createPostForm{
+    width: 90%;
+}
+.postTitle{
+    text-align: center;
+}
+.postBody{
+    text-align: center;
+}
+.postAuthor{
+    text-align: center;
+}
+.allPostTitle{
+    margin-left: 1em;
+    margin-bottom: 2em;
+}
+.postCard{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+.editPostBtn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+
+}
+.modalInputTitle {
+    width: 100%;
+    height: 3em;
+    border-radius: 6px;
+    border: 1px solid lightgrey;
+    margin-bottom: 1em;
+}
+.modalInputPostBody{
+    width: 100%;
+    height: 20vh;
+    border-radius: 6px;
+    border: 1px solid lightgrey;
+    margin-bottom: 1em;
+}
+.settingsInput{
+    width: 100%;
+    margin-bottom: 1em;
+    height: 3em;
+    border-radius: 6px;
+    border: 1px solid lightgrey;
+}
+.settingsForm{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.settingsTitle{
+    margin-left: 1em;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.loginTitle{
+    margin-left: 1em;
+    margin-top: 4em;
+}
+.loginError{
+
+}
+.loginInput{
+    width: 100%;
+    margin-bottom: 1em;
+    height: 3em;
+    border-radius: 6px;
+    border: 1px solid lightgrey;
+
+}
+.registerTitle{
+    margin-left: 1em;
+    margin-top: 3em;
+    margin-bottom: 1em;
+}

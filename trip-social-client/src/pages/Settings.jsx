@@ -45,14 +45,15 @@ export default function Settings(){
     }
 
     return<>
-        <h1>Settings Page</h1>
-        <form onSubmit={submitHandler}>
+        <h1 className="settingsTitle">Settings</h1>
+        <form className="settingsForm" onSubmit={submitHandler}>
             <p>{message}</p>
             <input
                 type = "text"
                 placeholder = "Username"
                 value = {username}
                 onChange = {(e) => setUsername(e.target.value)}
+                className="settingsInput"
             />
 
             <input
@@ -60,8 +61,11 @@ export default function Settings(){
                 placeholder = "Password"
                 value = {password}
                 onChange = {(e) => setPassword(e.target.value)}
+                className="settingsInput"
             />
-            <button type = "Submit">Submit</button>
+            <button type="submit"
+                    className="btn btn-primary">Submit
+            </button>
         </form>
     </>
 

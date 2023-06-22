@@ -41,22 +41,27 @@ export default function CreatePost(){
 
     function deleteHandler(e){}
     return<>
-        <h1>Create Post</h1>
-        <form >
-            <p>{message}</p>
-            <input
-                type = "text"
-                placeholder = "write about trip"
-                value = {title}
-                onChange = {(e) => setTitle(e.target.value)}
-            />
-            <input
-                type = "text"
-                placeholder = "write about trip"
-                value = {postBody}
-                onChange = {(e) => setPostBody(e.target.value)}
-            />
-        </form>
-        <button onClick={submitHandler} type="submit">Submit</button>
+        <div className="createPostContainer">
+            <h1 className="createPostTitle">Create Post</h1>
+            <form className="createPostForm">
+                <p>{message}</p>
+                <input
+                    type = "text"
+                    placeholder = "Title"
+                    value = {title}
+                    onChange = {(e) => setTitle(e.target.value)}
+                    className="createPostTitleInput"
+                />
+                <textarea
+                    type = "text"
+                    placeholder = "Write a about trip..."
+                    value = {postBody}
+                    onChange = {(e) => setPostBody(e.target.value)}
+                    className="createPostBodyInput"
+                />
+            </form>
+            <button id="createPostBtn" type="submit" onClick={submitHandler} className="btn btn-primary">Submit</button>
+        </div>
+
     </>
 }

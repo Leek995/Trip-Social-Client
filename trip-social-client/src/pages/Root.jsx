@@ -18,6 +18,7 @@ export async function loader(){
 }
 export default function Root() {
     // utilizing local storage to temporarily show any update from settings
+
     const user1 = JSON.parse(localStorage.getItem("user"))
 
     const {user} = useLoaderData();
@@ -37,42 +38,19 @@ export default function Root() {
 
         })
 
-    function logOutUser(){
-        localStorage.clear();
-    }
-
 
     return<>
-        <h1>Home</h1>
-        <ul>
-            <li>
-                <Link to='/login'>Login</Link>
-            </li>
-            <li>
-                <Link to="/">Home</Link>
-            </li>
-            <li>
-                <button onClick={logOutUser}><Link to="/login">Logout</Link></button>
-            </li>
-            <li>
-                <Link to="/settings">Settings</Link>
-            </li>
-            <li>
-                <Link to="/register">Register</Link>
-            </li>
-        </ul>
+        <div className="profileCard">
+            <img className="profileImage" id="avatar"/>
+            <div className="profileName">
+                <h4 className="profileUsername">{user1.username}</h4>
+                <span className="profileFirstName">{user1.firstName}</span>
+                <span className="profileLastName">{user1.lastName}</span>
+            </div>
+
+        </div>
+
         <><Outlet/></>
-        <h1>User Details</h1>
-        <p>User ID: {user1.id}</p>
-        <p>User Role: {user1.roles}</p>
-        <p>User Username: {user1.username}</p>
-        <p>User Password: {user1.password}</p>
-        <p>User Email: {user1.email}</p>
-        <p>User First Name: {user1.firstName}</p>
-        <p>User Last Name: {user1.lastName}</p>
-        <p>User Last Name: {user1.dateOfBirth}</p>
-        <p>User Image: {user1.imageData.name}</p>
-        <img id="avatar"/>
     </>
 }
 

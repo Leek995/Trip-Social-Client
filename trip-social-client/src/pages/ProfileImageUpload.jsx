@@ -27,15 +27,19 @@ export default function ProfileImageUpload(){
     }
 
     return<>
-        <h1>Upload</h1>
-        <form onSubmit={submitHandler} encType="multipart/form-data">
+        <h1 className="registerTitle">Upload</h1>
+        <form className="loginForm" onSubmit={submitHandler} encType="multipart/form-data">
             <input
                 type = "file"
                 placeholder = "image"
                 name="image"
                 onChange = {handleImage}
+                className="uploadBtn"
             />
-            <button type="submit">Submit</button>
+
+            <button type="submit"
+                    className="btn btn-primary">Submit
+            </button>
         </form>
     </>
 }

@@ -41,14 +41,15 @@ export default function Login(){
 
     return(
         <>
-            <h1>Login</h1>
-            <form onSubmit={submitHandler}>
-                <p>{error}</p>
+            <h1 className="loginTitle">Login</h1>
+            <form className="loginForm" onSubmit={submitHandler}>
+                <p className="loginError">{error}</p>
                 <input
                     type = "text"
                     placeholder = "Username"
                     value = {username}
                     onChange = {(e) => setUsername(e.target.value)}
+                    className="loginInput"
                 />
 
                 <input
@@ -56,8 +57,12 @@ export default function Login(){
                     placeholder = "Password"
                     value = {password}
                     onChange = {(e) => setPassword(e.target.value)}
+                    className="loginInput"
                 />
-                <button onClick={()=>setError(UsernameAndPasswordValidation(username, password))} type = "Submit">Submit</button>
+                <button onClick={()=>setError(UsernameAndPasswordValidation(username, password))} type="submit"
+                        className="btn btn-primary">Submit
+                </button>
+
             </form>
         </>
     )

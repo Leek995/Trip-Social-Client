@@ -26,7 +26,7 @@ export default function Posts() {
     }, []);
     console.log(posts)
     return <>
-        <h1>All post</h1>
+        <h1 className="allPostTitle">All post</h1>
         <PostList posts={posts}/>
 
     </>

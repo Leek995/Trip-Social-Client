@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Form, Link, useNavigate} from "react-router-dom";
 import Additional from "./Additional";
+import UsernameAndPasswordValidation from "../validations/UsernameAndPasswordValidation.js";
 export default function Register(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -25,29 +26,34 @@ export default function Register(){
     }
     return(
         <>
-            <h1>Register Page</h1>
-            <Form  encType="multipart/form-data">
+            <h1 className="registerTitle">Register Page</h1>
+            <form  className="loginForm" encType="multipart/form-data">
                 <input
                     type = "text"
                     placeholder = "First name"
                     value = {firstName}
                     onChange = {(e) => setFirstName(e.target.value)}
+                    className="loginInput"
                 />
                 <input
                     type = "text"
                     placeholder = "Last Name"
                     value = {lastName}
                     onChange = {(e) => setLastName(e.target.value)}
+                    className="loginInput"
                 />
                 <input
                     type = "date"
                     placeholder = "Date of Birth"
                     value = {dateOfBirth}
                     onChange = {(e) => setDateOfBirth(e.target.value)}
+                    className="loginInput"
                 />
+                <button onClick={navy} type="submit"
+                        className="btn btn-primary">next
+                </button>
 
-                <button onClick={navy}>next</button>
-            </Form>
+            </form>
         </>
     )
 }
