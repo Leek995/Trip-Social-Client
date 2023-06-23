@@ -35,6 +35,7 @@ export default function ProfileImageUpload(){
                 name="image"
                 onChange = {handleImage}
                 className="uploadBtn"
+                required
             />
 
             <button type="submit"

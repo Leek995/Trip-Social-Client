@@ -36,6 +36,7 @@ export default function Additional(){
                 value = {email}
                 onChange = {(e) => setEmail(e.target.value)}
                 className="loginInput"
+                required
             />
             <input
                 type = "text"
@@ -43,13 +44,15 @@ export default function Additional(){
                 value = {username}
                 onChange = {(e) => setUsername(e.target.value)}
                 className="loginInput"
+                required
             />
             <input
-                type = "text"
+                type = "password"
                 placeholder = "Password"
                 value = {password}
                 onChange = {(e) => setPassword(e.target.value)}
                 className="loginInput"
+                required
             />
 
             <button type="submit"

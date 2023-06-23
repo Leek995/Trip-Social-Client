@@ -34,6 +34,7 @@ export default function Register(){
                     value = {firstName}
                     onChange = {(e) => setFirstName(e.target.value)}
                     className="loginInput"
+                    required
                 />
                 <input
                     type = "text"
@@ -41,6 +42,7 @@ export default function Register(){
                     value = {lastName}
                     onChange = {(e) => setLastName(e.target.value)}
                     className="loginInput"
+                    required
                 />
                 <input
                     type = "date"
@@ -48,6 +50,7 @@ export default function Register(){
                     value = {dateOfBirth}
                     onChange = {(e) => setDateOfBirth(e.target.value)}
                     className="loginInput"
+                    required
                 />
                 <button onClick={navy} type="submit"
                         className="btn btn-primary">next

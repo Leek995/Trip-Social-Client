@@ -29,7 +29,7 @@ export default function Login(){
                 } else if (response.status === 200) {
                     localStorage.setItem('jwt', JSON.stringify(await response.json()));
                     setTimeout(function (){
-                        navigate("/")
+                        window.location.replace("/")
                     }, 1000);
                     setError("submitted successfully!");
                 }
@@ -53,7 +53,7 @@ export default function Login(){
                 />
 
                 <input
-                    type = "text"
+                    type = "password"
                     placeholder = "Password"
                     value = {password}
                     onChange = {(e) => setPassword(e.target.value)}

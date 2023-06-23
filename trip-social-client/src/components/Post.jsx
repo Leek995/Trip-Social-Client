@@ -78,6 +78,7 @@ export const Post = ({post}) => {
                     <h5 className="postTitle">{post.title}</h5>
                     <p className="postBody">{post.postBody}</p>
                     <p className="postAuthor">{post['user'].username || "anon"}</p>
+
                     {post.user.id === user.id&&(
                         <div className="editPostBtn">
                             <button onClick={getIdFromPost} type="button" className="btn btn-primary" data-bs-toggle="modal"
@@ -108,6 +109,7 @@ export const Post = ({post}) => {
                                         value={title}
                                         onChange={(e) => setTitle(e.target.value)}
                                         className="modalInputTitle"
+
                                     />
                                     <textarea
                                         type="text"
@@ -115,6 +117,7 @@ export const Post = ({post}) => {
                                         value={postBody}
                                         onChange={(e) => setPostBody(e.target.value)}
                                         className="modalInputPostBody"
+
                                     />
                                     <div className="modal-footer">
                                         <button type="button" className="btn btn-secondary"
