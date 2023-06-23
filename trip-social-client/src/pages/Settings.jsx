@@ -35,7 +35,7 @@ export default function Settings(){
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${jwt_token.jwt}`
             },
-            body: JSON.stringify(defaultUserInfo)
+            body: JSON.stringify(updatedUser)
         })
             .then(response => response.json())
             .then(data => {
@@ -49,9 +49,9 @@ export default function Settings(){
                 // }, 1000);
                 setMessage("submitted successfully!");
             });
-            // setUsername("");
-            // setPassword("");
-        console.log(username)
+        // setUsername("");
+        // setPassword("");
+        lo
     }
 
     return<>
